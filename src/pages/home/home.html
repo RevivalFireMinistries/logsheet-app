@@ -4,14 +4,36 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+
+<ion-content>
+  <h2>Logsheets</h2>
+  <ion-item>
+    <ion-label>Select Date</ion-label>
+    <ion-datetime displayFormat="DD-MMM-YYYY" pickerFormat="DD-MMM-YYYY" [(ngModel)]="serviceDate"></ion-datetime>
+  </ion-item>
+    <ion-item><ion-input type="text" name="firstName" [(ngModel)]="filter.firstName" placeholder="Search by name..."></ion-input></ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        Full Name
+      </ion-col>
+      <ion-col>
+        Phone
+      </ion-col>
+      <ion-col>
+        Present?
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let member of members | memberfilter :filter ">
+      <ion-col>
+        {{member.firstName}} {{member.lastName}}
+      </ion-col>
+      <ion-col>
+        {{member.phone}}
+      </ion-col>
+      <ion-col class="text-right">
+          <ion-checkbox color="dark" checked="{{member.present}}"></ion-checkbox>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
