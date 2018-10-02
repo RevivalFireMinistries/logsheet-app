@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class MembersService {
 
-  url = 'http://41.185.27.50:3140/assemblies/1/members';
+  membersUrl = 'http://localhost:1985/members';
   logSheetUrl = 'http://localhost:1985/logsheets';
   //url = '../data/members.json';
 
@@ -16,7 +16,7 @@ export class MembersService {
   }
 
   getMembers(): Observable<Member> {
-    return this.http.get<Member>(this.url);
+    return this.http.get<Member>(this.membersUrl);
   }
 
   saveLogSheet(logsheet:any): Observable<Object> {

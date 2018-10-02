@@ -44,7 +44,7 @@
       <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="serviceDate"></ion-datetime>
     </ion-item>
     <ion-item>
-      <ion-searchbar type="text" name="firstName" [(ngModel)]="filter.firstName" placeholder="Search by name..."></ion-searchbar>
+      <ion-searchbar type="text" name="fullname" [(ngModel)]="filter.fullName" placeholder="Search by name..."></ion-searchbar>
     </ion-item>
     <ion-grid>
       <ion-row>
@@ -57,7 +57,7 @@
       </ion-row>
       <ion-row *ngFor="let member of members | memberfilter :filter ">
         <ion-col width-90>
-          {{member.firstName}} {{member.lastName}}
+          {{member.fullName}}
         </ion-col>
         <ion-col width-10>
             <ion-checkbox color="dark" checked="{{member.present}}" [(ngModel)]="member.present"></ion-checkbox>

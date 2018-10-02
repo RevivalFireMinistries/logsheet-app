@@ -52,7 +52,7 @@ export class HomePage {
     }
     this.members.forEach(function (m) {
       let attendanceVar = m.present ? 'Present' : 'Absent';
-      logSheet.attendance[m.firstName.concat(' ',m.lastName)] = attendanceVar;
+      logSheet.attendance[m.fullName] = attendanceVar;
     });
    this.memberService.saveLogSheet(logSheet)
    .subscribe(
