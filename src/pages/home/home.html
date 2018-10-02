@@ -1,39 +1,70 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header>
+    <ion-toolbar >
+      <ion-buttons start>
+          <button ion-button icon-end>
+              New Member
+              <ion-icon ios="ios-person-add" md="md-person-add"></ion-icon>
+            </button>
+
+      </ion-buttons>
+
+      <ion-title></ion-title>
+
+      <ion-buttons end>
+        <button ion-button icon-only>
+
+        </button>
+
+      </ion-buttons>
+
+    </ion-toolbar>
+  </ion-header>
 
 
 <ion-content>
-  <h2>Logsheets</h2>
+    <ion-card>
+        <ion-card-header>
+            <ion-item>
+                <ion-label><h2>New Logsheet</h2></ion-label>
+            </ion-item>
+        </ion-card-header>
+        <ion-card-content>
+<ion-item>
+  <button ion-button icon-end (click)="onSave()">
+    Save Log Sheet
+    <ion-icon ios="ios-bookmark" md="md-bookmark"></ion-icon>
+  </button>
+  <button ion-button icon-end>
+    Clear
+    <ion-icon ios="ios-refresh" md="md-refresh"></ion-icon>
+  </button>
+</ion-item>
   <ion-item>
-    <ion-label>Select Date</ion-label>
-    <ion-datetime displayFormat="DD-MMM-YYYY" pickerFormat="DD-MMM-YYYY" [(ngModel)]="serviceDate"></ion-datetime>
-  </ion-item>
-    <ion-item><ion-input type="text" name="firstName" [(ngModel)]="filter.firstName" placeholder="Search by name..."></ion-input></ion-item>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        Full Name
-      </ion-col>
-      <ion-col>
-        Phone
-      </ion-col>
-      <ion-col>
-        Present?
-      </ion-col>
-    </ion-row>
-    <ion-row *ngFor="let member of members | memberfilter :filter ">
-      <ion-col>
-        {{member.firstName}} {{member.lastName}}
-      </ion-col>
-      <ion-col>
-        {{member.phone}}
-      </ion-col>
-      <ion-col class="text-right">
-          <ion-checkbox color="dark" checked="{{member.present}}"></ion-checkbox>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+      <ion-label>Select Date</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="serviceDate"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-searchbar type="text" name="firstName" [(ngModel)]="filter.firstName" placeholder="Search by name..."></ion-searchbar>
+    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col width-90>
+          Full Name
+        </ion-col>
+        <ion-col width-10>
+          Check Box if Present
+        </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let member of members | memberfilter :filter ">
+        <ion-col width-90>
+          {{member.firstName}} {{member.lastName}}
+        </ion-col>
+        <ion-col width-10>
+            <ion-checkbox color="dark" checked="{{member.present}}" [(ngModel)]="member.present"></ion-checkbox>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+        </ion-card-content>
+      </ion-card>
+
 </ion-content>

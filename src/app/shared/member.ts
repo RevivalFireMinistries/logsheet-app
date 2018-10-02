@@ -10,12 +10,12 @@ export class Member {
   /**
    * @type {string}
    */
-  firstName: String;
+  firstName: string;
 
   /**
    * @type {string}
    */
-  lastName: String;
+  lastName: string;
 
     /**
    * @type {string}
