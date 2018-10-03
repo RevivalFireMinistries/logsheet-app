@@ -27,7 +27,7 @@ export class HomePage {
   ngOnInit() {
     this.memberService.getMembers()
       .subscribe((function(data){
-        this.serviceDate = new Date().toISOString();
+        this.serviceDate = new Date().toLocaleDateString();
         this.members = data;
         for(let m of this.members){
           m.present = false;
