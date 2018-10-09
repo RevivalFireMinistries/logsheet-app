@@ -19,6 +19,8 @@ export class HomePage {
 
   public serviceDate: String = new Date().toDateString();
 
+  public totalAttendance: number = 0;
+
 
   constructor(public navCtrl: NavController, private memberService: MembersService, public loadingCtrl:LoadingController) {
 
@@ -33,6 +35,16 @@ export class HomePage {
           m.present = false;
         }
       }).bind(this));
+  }
+
+  updateAttendance() {
+  let total = 0;
+   for(let i=0;i<this.members.length;i++){
+     if(this.members[i].present === true){
+       total += 1;
+     }
+   }
+   this.totalAttendance = total;
   }
 
  onSave(){
