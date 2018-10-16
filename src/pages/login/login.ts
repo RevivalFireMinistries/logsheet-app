@@ -1,5 +1,4 @@
 import { TabsPage } from './../tabs/tabs';
-import { HomePage } from './../home/home';
 import { Component, trigger, state, style, transition, animate, keyframes } from '@angular/core';
 import {NavController, ToastController} from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
