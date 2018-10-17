@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {LoadingController} from 'ionic-angular';
 import { AboutPage } from '../about/about';
+import { ToastController } from 'ionic-angular';
 //import * as moment from 'moment';
 //declare var moment: any;
 
@@ -22,7 +23,7 @@ export class HomePage {
   public totalAttendance: number = 0;
 
 
-  constructor(public navCtrl: NavController, private memberService: MembersService, public loadingCtrl:LoadingController) {
+  constructor(public navCtrl: NavController, private memberService: MembersService, public loadingCtrl:LoadingController, private toastCtrl: ToastController) {
 
   }
 
@@ -48,7 +49,7 @@ export class HomePage {
   }
 
  onSave(){
-  if(this.serviceDate !== null) {
+  if(this.totalAttendance > 0) {
 
     let loading = this.loadingCtrl.create({
       spinner: 'hide',
@@ -75,6 +76,7 @@ export class HomePage {
       response => {
         this.navCtrl.push(AboutPage);
         loading.dismiss();
+        this.presentToast();
       },
       () => {
           console.log("The POST observable is now completed.");
@@ -82,5 +84,19 @@ export class HomePage {
   );
   }
  }
+
+ presentToast() {
+  let toast = this.toastCtrl.create({
+    message: 'Logsheet was added successfully',
+    duration: 3000,
+    position: 'top'
+  });
+
+  toast.onDidDismiss(() => {
+    console.log('Dismissed toast');
+  });
+
+  toast.present();
+}
 
 }

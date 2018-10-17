@@ -72,19 +72,47 @@ export class LoginPage {
   }
 
   signIn() {
-    this.authProvider.login(this.username, this.password).subscribe((resp) => {
-      console.log('Logged in successfully', resp);
+    if(this.auth()){
+      this.authProvider.login(this.username, this.password).subscribe((resp) => {
+        console.log('Logged in successfully', resp);
+  
+        // If you app has Tabs, set root to TabsPage
+        this.navCtrl.setRoot(TabsPage)
+      }, err => {
+        console.log('Error logging in', err);
+  
+        this.toastCtrl.create({
+          message: err.message,
+          duration: 2000
+        }).present();
+      });
+    }else {
+      this.presentToast();
+    }
+   
+  }
 
-      // If you app has Tabs, set root to TabsPage
-      this.navCtrl.setRoot(TabsPage)
-    }, err => {
-      console.log('Error logging in', err);
-
-      this.toastCtrl.create({
-        message: err.message,
-        duration: 2000
-      }).present();
+  auth(){
+    if(this.username === "" || this.password === "") {
+        return false;
+    }
+    if(this.username === "test" && this.password === "test"){
+      return true;
+    }
+    return false;
+  }
+  presentToast() {
+    let toast = this.toastCtrl.create({
+      message: 'Invalid login details',
+      duration: 3000,
+      position: 'top'
     });
+  
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+  
+    toast.present();
   }
 
 }

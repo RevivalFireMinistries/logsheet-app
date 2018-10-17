@@ -11,7 +11,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class AuthProvider {
 
-  membersUrl = 'http://localhost:1985/members';
+  membersUrl = 'http://41.185.27.50:1985/members/1';
 
   constructor(public http: HttpClient) {
     console.log('Hello AuthProvider Provider');

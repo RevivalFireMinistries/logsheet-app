@@ -28,14 +28,14 @@
     </ion-item>
 <ion-item>
 
-          <button ion-button class="log-sheet-button" (click)="onSave()">Save</button>
+          <button ion-button class="log-sheet-button" (click)="onSave()" [disabled]="totalAttendance < 1">Save</button>
 
 </ion-item>
 <ion-item>
     Total Attendance : {{totalAttendance}}
 </ion-item>
   <ion-item>
-      <ion-label>Select Date</ion-label>
+      <ion-label>Click to Select Date</ion-label>
       <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="serviceDate"></ion-datetime>
     </ion-item>
     <ion-item>

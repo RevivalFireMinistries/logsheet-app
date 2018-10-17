@@ -8,8 +8,8 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class MembersService {
 
-  membersUrl = 'http://localhost:1985/members';
-  logSheetUrl = 'http://localhost:1985/logsheets';
+  membersUrl = 'http://41.185.27.50:1985/members/1';
+  logSheetUrl = 'http://41.185.27.50:1985/logsheets';
   //url = '../data/members.json';
 
   constructor(private http: HttpClient) {
