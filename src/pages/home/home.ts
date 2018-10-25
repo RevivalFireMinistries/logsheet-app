@@ -59,6 +59,7 @@ export class HomePage {
     loading.present();
 
     let logSheet = {
+      assemblyId : 1,
       eventDate : this.serviceDate,
       attendance : {
       }
